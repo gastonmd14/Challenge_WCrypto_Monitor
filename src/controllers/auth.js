@@ -10,7 +10,6 @@ router.post('/login', async (req, res, next) => {
         res.status(200).json('Login Succesfull');
     } catch (e) {
         console.log('Error: ', e);
-        res.status(404).json('Login Failed');
     }
     
 });
@@ -18,11 +17,16 @@ router.post('/login', async (req, res, next) => {
 router.post('/register', async (req, res, next) => {
     try {
         const user = req.body;
-        const result = await handler.createUser(user);
-        res.status(200).json('User Created');
+        const verifyUsername = await handler.findUser(user);
+        if (!verifyUsername) {
+            const result = await handler.createUser(user);
+            res.status(200).json('User Created');
+        } else {
+            res.status(400).json('User Creation Failed')
+        }
+        
     } catch (e) {
         console.log('Error: ', e);
-        res.status(404).json('Register Failed');
     }
 });
 

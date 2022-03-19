@@ -1,10 +1,14 @@
 const { User } = require('../../models');
 const bcrypt = require('bcryptjs');
 
-const getUserById = async (user) => {
+const getUser = async (user) => {
     try {
         const userToFind = user;
-        const result = await userModel.findOne(userToFind);
+        const result = await User.findOne({
+            where: {
+                userName: userToFind.userName
+            }
+        });
         return result;
     } catch (e) {
         console.log('Error: ', e);
@@ -24,6 +28,6 @@ const storeUser = async (user) => {
 
 
 module.exports = {
-    getUserById,
+    getUser,
     storeUser
 };
