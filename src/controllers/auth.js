@@ -1,16 +1,18 @@
 var express = require('express');
 var router = express.Router();
 
-const handler = require('../handlers/auth')
+const handler = require('../handlers/auth');
+const createToken = require('../utils/createToken')
 
 router.post('/login', async (req, res, next) => {
     try {
         const user = req.body;
         const result = await handler.findUser(user);
         if (result) {
-            res.status(200).json('Login Succesfull');
+            const token = await createToken(result);
+            res.status(200).json({token: token, message: 'Login Succesfull'});
         } else {
-            res.status(400).json('Login Failed');
+            res.status(400).json('Username or Password Wrong!!');
         }
         
     } catch (err) {
@@ -25,7 +27,8 @@ router.post('/register', async (req, res, next) => {
         const verifyUsername = await handler.findUser(user);
         if (!verifyUsername) {
             const result = await handler.createUser(user);
-            res.status(200).json('User Created');
+            const token = await createToken(result);
+            res.status(200).json({token: token, message: 'User Create Succesfull'});
         } else {
             res.status(400).json('User Creation Failed');
         }
