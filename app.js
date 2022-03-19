@@ -6,6 +6,7 @@ var logger = require('morgan');
 
 var authController = require('./src/controllers/auth');
 var usersController = require('./src/controllers/users');
+var coinsController = require('./src/controllers/coins');
 
 var app = express();
 
@@ -21,6 +22,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/auth', authController);
 app.use('/users', usersController);
+app.use('/coins', coinsController);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
