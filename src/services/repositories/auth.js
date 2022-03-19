@@ -9,9 +9,16 @@ const getUser = async (user) => {
                 userName: userToFind.userName
             }
         });
-        return result;
-    } catch (e) {
-        console.log('Error: ', e);
+        if (result) {
+            const verifyPassword = bcrypt.compareSync(userToFind.password, result.password);
+            if (verifyPassword == true) {
+                return result;
+            }
+        } else {
+            return result;
+        }
+    } catch (err) {
+        console.log(err);
     }
 };
 
@@ -21,11 +28,10 @@ const storeUser = async (user) => {
         userToCreate.password = bcrypt.hashSync(userToCreate.password, 8);
         const result = await User.create(userToCreate);
         return result;
-    } catch (e) {
-        console.log('Error: ', e);
+    } catch (err) {
+        console.log(err);
     }
 }
-
 
 module.exports = {
     getUser,
