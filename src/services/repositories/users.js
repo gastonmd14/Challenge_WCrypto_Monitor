@@ -1,4 +1,5 @@
 const { User } = require('../../models');
+const { Op } = require("sequelize");
 const bcrypt = require('bcryptjs');
 
 const getUser = async (user) => {
@@ -22,6 +23,19 @@ const getUser = async (user) => {
     }
 };
 
+const getUserById = async (id) => {
+    try {
+        const userId = id;
+        const result = await User.findByPk(userId, {
+            attributes: ['id', 'firstName', 'lastName', 'userName']
+        });
+        console.log(result, 'User Data');
+        return result;
+    } catch (err) {
+        console.log(err);
+    }
+};
+
 const storeUser = async (user) => {
     try {
         const userToCreate = user;
@@ -35,5 +49,6 @@ const storeUser = async (user) => {
 
 module.exports = {
     getUser,
+    getUserById,
     storeUser
 };
