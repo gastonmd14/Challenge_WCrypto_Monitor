@@ -6,6 +6,18 @@ const listCoins = async() => {
     return data;
 };
 
+const listAllCoins = async() => {
+    const data = await CoinGeckoClient.coins.all();
+    return data;
+};
+
+const coinsMarkets = async() => {
+    const data = await CoinGeckoClient.coins.markets();
+    return data;
+};
+
 module.exports = {
-    listCoins
+    listCoins,
+    listAllCoins,
+    coinsMarkets
 }
