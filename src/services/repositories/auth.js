@@ -1,6 +1,7 @@
-const { userModel } = require('../../models/user');
+const { User } = require('../../models');
+const bcrypt = require('bcryptjs');
 
-const find = async (user) => {
+const getUserById = async (user) => {
     try {
         const userToFind = user;
         const result = await userModel.findOne(userToFind);
@@ -10,10 +11,11 @@ const find = async (user) => {
     }
 };
 
-const create = async (user) => {
+const storeUser = async (user) => {
     try {
         const userToCreate = user;
-        const result = await userModel.create(userToCreate);
+        userToCreate.password = bcrypt.hashSync(userToCreate.password, 8);
+        const result = await User.create(userToCreate);
         return result;
     } catch (e) {
         console.log('Error: ', e);
@@ -22,6 +24,6 @@ const create = async (user) => {
 
 
 module.exports = {
-    find,
-    create
+    getUserById,
+    storeUser
 };
