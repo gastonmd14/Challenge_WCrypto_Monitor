@@ -3,14 +3,27 @@ var router = express.Router();
 
 const handler = require('../handlers/auth')
 
-router.get('/auth/users', () => {
+router.post('/login', async (req, res, next) => {
     try {
         const user = req.body;
-        const result = handler.findUser(user);
-        console.log(result, 'User Found');
+        const result = await handler.findUser(user);
+        console.log(result, 'User Founded');
     } catch (e) {
         console.log('Error: ', e);
+        res.status(404).json('Login Failed');
     }
-})
+    res.status(200).json('Login Succesfull');
+});
+
+router.post('/register', async (req, res, next) => {
+    try {
+        const user = req.body;
+        const result = await handler.findUser(user);
+        console.log(result, 'User Created');
+    } catch (e) {
+        console.log('Error: ', e);
+        res.status(404).json('Register Failed');
+    }
+});
 
 module.exports = router;
