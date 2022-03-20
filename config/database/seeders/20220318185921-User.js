@@ -10,6 +10,22 @@ module.exports = {
       password: bcrypt.hashSync('1234', 8),
       createdAt: new Date(),
       updatedAt: new Date(),
+    },
+    {
+      firstName: 'Sam',
+      lastName: 'Smith',
+      userName: 'Sam.Smith',
+      password: bcrypt.hashSync('1234', 8),
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    },
+    {
+      firstName: 'Billy',
+      lastName: 'Idol',
+      userName: 'Billy.Idol',
+      password: bcrypt.hashSync('1234', 8),
+      createdAt: new Date(),
+      updatedAt: new Date(),
     }], {});
   },
 
