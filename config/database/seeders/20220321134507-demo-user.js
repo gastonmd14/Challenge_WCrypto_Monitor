@@ -8,6 +8,7 @@ module.exports = {
       lastName: 'Doe',
       userName: 'John.Doe',
       password: bcrypt.hashSync('1234', 8),
+      walletId: 1,
       createdAt: new Date(),
       updatedAt: new Date(),
     },
@@ -16,6 +17,7 @@ module.exports = {
       lastName: 'Smith',
       userName: 'Sam.Smith',
       password: bcrypt.hashSync('1234', 8),
+      walletId: 2,
       createdAt: new Date(),
       updatedAt: new Date(),
     },
@@ -24,6 +26,7 @@ module.exports = {
       lastName: 'Idol',
       userName: 'Billy.Idol',
       password: bcrypt.hashSync('1234', 8),
+      walletId: 3,
       createdAt: new Date(),
       updatedAt: new Date(),
     }], {});

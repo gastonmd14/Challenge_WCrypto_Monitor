@@ -20,6 +20,13 @@ module.exports = {
       password: {
         type: Sequelize.STRING
       },
+      walletId: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'Wallets',
+          key: 'id'
+        },
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
