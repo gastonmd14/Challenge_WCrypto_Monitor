@@ -8,8 +8,8 @@
     "db_drop": "sequelize-cli db:seed:undo:all && sequelize-cli db:migrate:undo:all && sequelize-cli db:drop"
   },
   "dependencies": {
+    "axios": "^0.26.1",
     "bcryptjs": "^2.4.3",
-    "coingecko-api": "^1.0.10",
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
     "dotenv": "^16.0.0",
