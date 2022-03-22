@@ -1,0 +1,208 @@
+{
+	"info": {
+		"_postman_id": "882c3dda-ac92-48ea-9e88-3355c8c8e6b8",
+		"name": "Challenge_WCrypto_Monitor",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "LOGIN",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"userName\":\"John.Doe\",\r\n    \"password\":\"1234\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/auth/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "REGISTER",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstName\":\"Sam\",\r\n    \"lastName\":\"Smith\",\r\n    \"userName\":\"Sam.Smith\",\r\n    \"password\":\"1234\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/auth/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Wallet",
+					"item": [
+						{
+							"name": "SAVE COIN",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJmaXJzdE5hbWUiOiJKb2huIiwibGFzdE5hbWUiOiJEb2UiLCJ1c2VyTmFtZSI6IkpvaG4uRG9lIiwiaWQiOjEsImlhdCI6MTY0Nzk0NjA0OCwiZXhwIjoxNjQ3OTg5MjQ4fQ.QTGZNPPoNBm4RwTsvYdAD4aCQfiKzL_kQQCoidsrIUaO7jZ36DDAx81WH-nKXfdrzg6k3qOqPxRE2MYr5oKEnA",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"bitcoin\",\r\n    \"price\": 41628\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/users/1/coins",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"users",
+										"1",
+										"coins"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "LIST COIN",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJmaXJzdE5hbWUiOiJKb2huIiwibGFzdE5hbWUiOiJEb2UiLCJ1c2VyTmFtZSI6IkpvaG4uRG9lIiwiaWQiOjEsImlhdCI6MTY0Nzk0NjA0OCwiZXhwIjoxNjQ3OTg5MjQ4fQ.QTGZNPPoNBm4RwTsvYdAD4aCQfiKzL_kQQCoidsrIUaO7jZ36DDAx81WH-nKXfdrzg6k3qOqPxRE2MYr5oKEnA",
+										"type": "default"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:3000/users/1/coins/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"users",
+										"1",
+										"coins",
+										"1"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "GETONE",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJmaXJzdE5hbWUiOiJKb2huIiwibGFzdE5hbWUiOiJEb2UiLCJ1c2VyTmFtZSI6IkpvaG4uRG9lIiwiaWQiOjEsImlhdCI6MTY0NzkxNDY1OSwiZXhwIjoxNjQ3OTU3ODU5fQ.ihhvjQVktz2JKs96wVNi0VTgeRVDlWXRKCoUYunMfHekJPJ_Ahj7Z-FRwZu7JZEF8nWWLSQNfYr7JmTy_NL3-g",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/users/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"users",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Coin",
+			"item": [
+				{
+					"name": "LIST COIN",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/coins/markets",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"coins",
+								"markets"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

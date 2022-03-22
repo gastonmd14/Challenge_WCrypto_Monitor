@@ -14,14 +14,18 @@ yarn
 ```bash
 yarn deploy
 ```
-## Start local server
-
-```bash
-yarn start
-```
 
 3. Drop database, migration and Seeder
 
 ```bash
 yarn drop
 ```
+## Start local server
+
+```bash
+yarn start
+```
+
+## Test Endpoints
+
+1. Import Challenge_Wcrypto_Monitor.json to postman
