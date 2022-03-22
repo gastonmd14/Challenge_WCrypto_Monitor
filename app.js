@@ -3,15 +3,18 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+const key = require('./src/utils/keyToken');
 
 var authController = require('./src/controllers/auth');
 var usersController = require('./src/controllers/users');
+var coinsController = require('./src/controllers/coins');
 
 var app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'src/views'));
 app.set('view engine', 'ejs');
+app.set(key.secretName, key.key);
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -21,6 +24,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/auth', authController);
 app.use('/users', usersController);
+app.use('/coins', coinsController);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
