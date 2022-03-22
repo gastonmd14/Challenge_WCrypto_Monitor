@@ -4,34 +4,50 @@ const jwt = require('jsonwebtoken');
 const key = require('../../utils/keyToken');
 const handler = require('../../handlers/users')
 
-
-
-
 router.use(async (req, res, next) => {
+    
+    const id = req.path.split('/')[1];
 
-    let id = req.path.split('/')[1];
     const foundUser = await handler.findUserId(id);
-    console.log(foundUser.userName);
 
-    const receivedToken = req.headers['authorization'];
+    if(foundUser) {
 
-    if(!receivedToken) res.status(403).json({message: 'Token Not Found'});
+        const receivedToken = req.headers['authorization'];
 
-    token = receivedToken.split(' ')[1];
+        if(!receivedToken) res.status(403).json({message: 'Token Not Found'});
 
-    jwt.verify(token, key.key, (err, decoded) => {
-        if(err || !(decoded.userName === foundUser.userName)) {
-            if(err == null) {
-                return res.status(401).json({message: 'User Path no valid for this Token'});
+        token = receivedToken.split(' ')[1];
+
+        jwt.verify(token, key.key, (err, decoded) => {
+
+            if(err || !(decoded.userName === foundUser.userName)) {
+                
+                if(err == null) {
+
+                    return res.status(401).json({message: 'User Path no valid for this Token'});
+
+                } else {
+
+                    return res.status(500).json({message: err});
+
+                }
+                
             } else {
-                return res.status(401).json({message: err});
+
+                req.decoded = decoded;
+
+                next();
             }
-            
-        } else {
-            req.decoded = decoded;
-            next();
-        }
-    })
+
+        })
+    
+    } else {
+
+        return res.status(404).json({message: 'User Not Found'});
+
+    }
+
+    
 });
 
 module.exports = router;
