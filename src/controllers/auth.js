@@ -12,9 +12,8 @@ router.post('/login', async (req, res, next) => {
             const token = await createToken(result);
             res.status(200).json({token: token, message: 'Login Succesfull'});
         } else {
-            res.status(400).json('Username or Password Wrong!!');
-        }
-        
+            res.status(400).json('Username or Password Failed');
+        }        
     } catch (err) {
         res.status(500).json({'message': err});
     }
@@ -31,8 +30,7 @@ router.post('/register', async (req, res, next) => {
             res.status(200).json({token: token, message: 'User Create Succesfull'});
         } else {
             res.status(400).json('User Creation Failed');
-        }
-        
+        }        
     } catch (err) {
         res.status(500).json({'message': err});
     }
