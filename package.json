@@ -4,8 +4,8 @@
   "private": true,
   "scripts": {
     "start": "nodemon ./bin/www",
-    "db_run": " sequelize-cli db:create && sequelize-cli db:migrate && sequelize-cli db:seed:all",
-    "db_drop": "sequelize-cli db:seed:undo:all && sequelize-cli db:migrate:undo:all && sequelize-cli db:drop"
+    "deploy": " sequelize-cli db:create && sequelize-cli db:migrate && sequelize-cli db:seed:all",
+    "drop": "sequelize-cli db:seed:undo:all && sequelize-cli db:migrate:undo:all && sequelize-cli db:drop"
   },
   "dependencies": {
     "axios": "^0.26.1",
