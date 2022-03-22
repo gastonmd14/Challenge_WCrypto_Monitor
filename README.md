@@ -1,4 +1,4 @@
-# project Challenge_WCrypto_Monitor
+# Project Challenge_WCrypto_Monitor
 ## Envinroment setup
 
 To install dependencies, run
