@@ -9,7 +9,7 @@ yarn
 
 1. Copy .env.example to .env and fill with database credentials.
 
-2. Create database, run Migration and Seeder
+2. Create database, run migration and Seeder
 
 ```bash
 yarn deploy
@@ -20,7 +20,8 @@ yarn deploy
 yarn start
 ```
 
-3. Drop database, run Migration and Seeder
+3. Drop database, migration and Seeder
 
 ```bash
 yarn drop
+```
